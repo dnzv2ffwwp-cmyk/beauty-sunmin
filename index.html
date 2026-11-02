@@ -8,397 +8,8 @@
     <title>정선민 — Beauty Web Designer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Gowun+Batang:wght@400;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --paper: #f6f5ef;
-            --ink: #173c32;
-            --muted: #78827a;
-            --line: rgba(23, 60, 50, .18);
-            --serif: "Gowun Batang", Georgia, serif;
-            --sans: "DM Sans", "Manrope", sans-serif;
-        }
-
-        * { box-sizing: border-box; }
-        html { scroll-behavior: smooth; scroll-padding-top: 88px; }
-        body {
-            margin: 0;
-            color: var(--ink);
-            background: var(--paper);
-            font-family: var(--sans);
-            -webkit-font-smoothing: antialiased;
-        }
-        a { color: inherit; text-decoration: none; }
-        button { color: inherit; font: inherit; }
-        img { display: block; width: 100%; }
-        .shell { width: min(1440px, calc(100% - 112px)); margin: 0 auto; }
-        .eyebrow {
-            margin: 0;
-            font-size: 10px;
-            font-weight: 600;
-            letter-spacing: .17em;
-            line-height: 1.5;
-            text-transform: uppercase;
-        }
-        .site-header {
-            position: sticky;
-            z-index: 20;
-            top: 0;
-            border-bottom: 1px solid var(--line);
-            background: rgba(246, 245, 239, .94);
-            backdrop-filter: blur(14px);
-        }
-        .header-inner {
-            display: flex;
-            min-height: 78px;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .wordmark {
-            font-size: 19px;
-            font-weight: 700;
-            letter-spacing: -.08em;
-        }
-        .wordmark span { font-family: var(--serif); font-weight: 400; }
-        .main-nav { display: flex; gap: 42px; align-items: center; }
-        .main-nav a, .availability { font-size: 11px; }
-        .main-nav a { transition: opacity .2s ease; }
-        .main-nav a:hover { opacity: .55; }
-        .availability { display: flex; align-items: center; gap: 9px; color: var(--muted); }
-        .availability::before {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: #759b6a;
-            content: "";
-        }
-        .menu-toggle {
-            display: none;
-            width: 42px;
-            height: 42px;
-            padding: 11px;
-            border: 0;
-            background: transparent;
-            cursor: pointer;
-        }
-        .menu-toggle span {
-            display: block;
-            height: 1px;
-            margin: 5px 0;
-            background: var(--ink);
-            transition: transform .2s ease;
-        }
-
-        .hero { padding: 74px 0 90px; }
-        .hero-topline {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 26px;
-        }
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1.03fr .97fr;
-            min-height: 550px;
-            align-items: center;
-            gap: 5.5%;
-        }
-        .hero-copy { position: relative; z-index: 1; padding: 25px 0; }
-        .hero h1 {
-            margin: 0 0 25px -7px;
-            font-family: var(--serif);
-            font-size: clamp(72px, 10.1vw, 150px);
-            font-weight: 400;
-            letter-spacing: -.095em;
-            line-height: .91;
-        }
-        .hero h1 span { display: block; }
-        .hero h1 .indented { padding-left: 13%; }
-        .hero-subcopy {
-            max-width: 370px;
-            margin: 35px 0 29px;
-            color: #53675c;
-            font-size: 13px;
-            line-height: 1.9;
-            word-break: keep-all;
-        }
-        .text-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 22px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid var(--ink);
-            font-size: 11px;
-            font-weight: 600;
-        }
-        .text-link span { font-size: 16px; transition: transform .2s ease; }
-        .text-link:hover span { transform: translate(4px, -2px); }
-        .hero-visual {
-            position: relative;
-            min-height: 550px;
-            overflow: hidden;
-            background: #dce5d8;
-        }
-        .hero-visual img { height: 100%; min-height: 550px; object-fit: cover; }
-        .image-note {
-            position: absolute;
-            right: 18px;
-            bottom: 18px;
-            padding: 12px 15px;
-            background: var(--paper);
-            font-family: var(--serif);
-            font-size: 13px;
-        }
-        .hero-caption {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 17px;
-            color: var(--muted);
-            font-size: 9px;
-            letter-spacing: .11em;
-        }
-        .ticker {
-            overflow: hidden;
-            border-top: 1px solid var(--line);
-            border-bottom: 1px solid var(--line);
-        }
-        .ticker-track {
-            display: flex;
-            width: max-content;
-            align-items: center;
-            gap: 35px;
-            padding: 22px 0;
-            animation: drift 35s linear infinite;
-        }
-        .ticker-track span {
-            font-family: var(--serif);
-            font-size: 21px;
-            letter-spacing: -.04em;
-        }
-        .ticker-track .dot { color: #9fae9d; font-family: var(--sans); font-size: 17px; }
-        @keyframes drift { to { transform: translateX(-50%); } }
-
-        .intro { padding: 145px 0 150px; }
-        .intro-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 9%; }
-        .intro-label { padding-top: 14px; }
-        .intro-copy { max-width: 900px; }
-        .intro-copy h2 {
-            margin: 0;
-            font-family: var(--serif);
-            font-size: clamp(38px, 5.4vw, 76px);
-            font-weight: 400;
-            letter-spacing: -.065em;
-            line-height: 1.3;
-            word-break: keep-all;
-        }
-        .intro-copy h2 em { color: #879688; font-style: normal; }
-        .intro-copy p {
-            max-width: 470px;
-            margin: 27px 0 0;
-            color: var(--muted);
-            font-size: 12px;
-            line-height: 1.9;
-            word-break: keep-all;
-        }
-
-        .work { padding: 95px 0 135px; background: #e9ede5; }
-        .section-heading {
-            display: flex;
-            justify-content: space-between;
-            align-items: end;
-            margin-bottom: 47px;
-        }
-        .section-heading h2 {
-            margin: 10px 0 0;
-            font-family: var(--serif);
-            font-size: clamp(47px, 7vw, 90px);
-            font-weight: 400;
-            letter-spacing: -.075em;
-            line-height: 1;
-        }
-        .section-heading > p { max-width: 230px; margin: 0 0 6px; color: var(--muted); font-size: 11px; line-height: 1.8; }
-        .project-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 76px 24px; }
-        .project-card:nth-child(even) { margin-top: 105px; }
-        .project-image {
-            position: relative;
-            display: block;
-            overflow: hidden;
-            background: #dce2d8;
-            aspect-ratio: 1.18 / 1;
-        }
-        .project-card:nth-child(2) .project-image { background: #dfd7c7; }
-        .project-card:nth-child(3) .project-image { background: #d5dfd9; }
-        .project-card:nth-child(4) .project-image { background: #e1d7cf; }
-        .project-image img { height: 100%; object-fit: cover; transition: transform .7s cubic-bezier(.2,.7,.2,1); }
-        .project-card:hover .project-image img { transform: scale(1.035); }
-        .project-number {
-            position: absolute;
-            top: 17px;
-            left: 17px;
-            padding: 9px 11px;
-            background: var(--paper);
-            font-size: 9px;
-        }
-        .project-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: start;
-            gap: 15px;
-            padding-top: 17px;
-        }
-        .project-info h3 { margin: 0 0 5px; font-family: var(--serif); font-size: 23px; font-weight: 400; letter-spacing: -.04em; }
-        .project-info p { margin: 0; color: var(--muted); font-size: 10px; letter-spacing: .04em; }
-        .project-type { padding-top: 5px; color: var(--muted); font-size: 9px; text-align: right; }
-
-        .about { padding: 142px 0; }
-        .about-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 12%; align-items: start; }
-        .about-photo {
-            position: relative;
-            width: 100%;
-            aspect-ratio: .83 / 1;
-            overflow: hidden;
-            background: #e3e1d8;
-        }
-        .about-photo img { height: 100%; object-fit: cover; }
-        .about-photo-note { position: absolute; right: 0; bottom: 0; padding: 12px 15px; background: var(--paper); font-size: 9px; }
-        .about-copy { padding-top: 17px; }
-        .about-copy h2 {
-            max-width: 570px;
-            margin: 24px 0 30px;
-            font-family: var(--serif);
-            font-size: clamp(39px, 5.2vw, 68px);
-            font-weight: 400;
-            letter-spacing: -.07em;
-            line-height: 1.23;
-            word-break: keep-all;
-        }
-        .about-copy > p { max-width: 430px; color: var(--muted); font-size: 12px; line-height: 2; word-break: keep-all; }
-        .services { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 30px; }
-        .services span { padding: 10px 13px; border: 1px solid var(--line); border-radius: 30px; font-size: 9px; }
-        .about-link { margin-top: 29px; }
-
-        .contact { padding: 112px 0 100px; color: #f6f5ef; background: var(--ink); }
-        .contact-inner { display: flex; justify-content: space-between; align-items: end; gap: 30px; }
-        .contact h2 {
-            margin: 18px 0 24px;
-            font-family: var(--serif);
-            font-size: clamp(53px, 9.5vw, 125px);
-            font-weight: 400;
-            letter-spacing: -.08em;
-            line-height: .98;
-        }
-        .contact .eyebrow { color: #b6c3b9; }
-        .contact-copy { max-width: 360px; margin: 0; color: #b6c3b9; font-size: 12px; line-height: 1.9; }
-        .contact-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 25px;
-            margin-top: 29px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid rgba(246,245,239,.65);
-            font-size: 12px;
-        }
-        .contact-link span { font-size: 18px; }
-        .contact-stamp {
-            display: grid;
-            width: 130px;
-            height: 130px;
-            flex: 0 0 auto;
-            place-items: center;
-            border: 1px solid rgba(246,245,239,.42);
-            border-radius: 50%;
-            font-family: var(--serif);
-            font-size: 13px;
-            line-height: 1.6;
-            text-align: center;
-            transform: rotate(-12deg);
-        }
-        .site-footer { color: #f6f5ef; background: var(--ink); }
-        .footer-inner {
-            display: flex;
-            min-height: 73px;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 1px solid rgba(246,245,239,.24);
-            color: #b6c3b9;
-            font-size: 9px;
-        }
-        .footer-links { display: flex; gap: 22px; }
-        .footer-links a:hover { color: #fff; }
-        .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
-        .reveal.is-visible { opacity: 1; transform: translateY(0); }
-
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
-            .reveal { opacity: 1; transform: none; }
-        }
-        @media (max-width: 800px) {
-            .shell { width: min(100% - 48px, 620px); }
-            .header-inner { min-height: 68px; }
-            .menu-toggle { display: block; }
-            .availability { display: none; }
-            .main-nav {
-                position: absolute;
-                top: 68px;
-                right: 0;
-                left: 0;
-                display: none;
-                align-items: stretch;
-                gap: 0;
-                padding: 10px 24px 21px;
-                border-bottom: 1px solid var(--line);
-                background: var(--paper);
-            }
-            .main-nav.is-open { display: flex; flex-direction: column; }
-            .main-nav a { padding: 13px 0; border-top: 1px solid var(--line); font-size: 13px; }
-            .menu-toggle[aria-expanded="true"] span:first-child { transform: translateY(3px) rotate(45deg); }
-            .menu-toggle[aria-expanded="true"] span:last-child { transform: translateY(-3px) rotate(-45deg); }
-            .hero { padding: 49px 0 65px; }
-            .hero-grid { grid-template-columns: 1fr; gap: 30px; }
-            .hero h1 { font-size: clamp(76px, 17vw, 130px); }
-            .hero-copy { padding: 5px 0 0; }
-            .hero-subcopy { margin-top: 24px; }
-            .hero-visual, .hero-visual img { min-height: 0; height: auto; aspect-ratio: .93 / 1; }
-            .intro { padding: 95px 0; }
-            .intro-grid { grid-template-columns: 1fr; gap: 25px; }
-            .intro-copy h2 { font-size: clamp(39px, 8vw, 59px); }
-            .work { padding: 75px 0 90px; }
-            .section-heading { align-items: start; flex-direction: column; gap: 15px; margin-bottom: 31px; }
-            .section-heading > p { max-width: 330px; }
-            .project-grid { gap: 48px 16px; }
-            .project-card:nth-child(even) { margin-top: 65px; }
-            .project-info { flex-direction: column; gap: 8px; }
-            .project-type { text-align: left; }
-            .about { padding: 92px 0; }
-            .about-grid { grid-template-columns: 1fr; gap: 42px; }
-            .about-photo { width: 80%; max-width: 420px; }
-            .about-copy { padding-top: 0; }
-            .contact { padding: 82px 0 70px; }
-            .contact-inner { align-items: start; }
-            .contact-stamp { width: 96px; height: 96px; font-size: 10px; }
-        }
-        @media (max-width: 520px) {
-            .shell { width: calc(100% - 40px); }
-            .hero-topline { margin-bottom: 18px; }
-            .hero h1 { margin-left: -4px; font-size: clamp(71px, 18vw, 95px); }
-            .hero h1 .indented { padding-left: 9%; }
-            .hero-subcopy { max-width: 320px; font-size: 12px; }
-            .hero-caption { font-size: 8px; }
-            .intro { padding: 78px 0; }
-            .intro-copy h2 { font-size: 37px; }
-            .project-grid { grid-template-columns: 1fr; gap: 34px; }
-            .project-card:nth-child(even) { margin-top: 0; }
-            .project-image { aspect-ratio: 1.15 / 1; }
-            .project-info { flex-direction: row; }
-            .project-type { text-align: right; }
-            .about-photo { width: 90%; }
-            .about-copy h2 { font-size: 42px; }
-            .contact-inner { flex-direction: column; }
-            .contact-stamp { align-self: end; margin-top: -6px; }
-            .footer-inner { min-height: 90px; flex-wrap: wrap; gap: 12px; padding: 18px 0; }
-            .footer-links { gap: 14px; }
-        }
-    </style>
+    <link rel="stylesheet" href="fonts/fonts.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <header class="site-header">
@@ -430,7 +41,7 @@
                 </div>
                 <div>
                     <div class="hero-visual">
-                        <img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&amp;fit=crop&amp;w=1200&amp;q=85" alt="햇빛이 비치는 자연주의 스킨케어 제품 연출" fetchpriority="high">
+                        <img src="assets/images/hero-skincare.jpg" alt="햇빛이 비치는 자연주의 스킨케어 제품 연출" fetchpriority="high">
                         <span class="image-note">a softer kind of beauty</span>
                     </div>
                     <div class="hero-caption"><span>THOUGHTFUL DESIGN, NATURAL BEAUTY</span><span>01 — 04</span></div>
@@ -449,7 +60,7 @@
             <div class="intro-grid">
                 <div class="intro-label">
                     <p class="eyebrow">A little introduction</p>
-                    <p class="eyebrow" style="margin-top: 12px; color: var(--muted);">01 / The point of view</p>
+                    <p class="eyebrow intro-subtitle">01 / The point of view</p>
                 </div>
                 <div class="intro-copy">
                     <h2>좋은 뷰티 디자인은<br><em>더하는 것보다</em> 덜어내는 데서<br>시작된다고 믿어요.</h2>
@@ -470,7 +81,7 @@
                 <div class="project-grid">
                     <article class="project-card reveal">
                         <a class="project-image" href="#contact" aria-label="Morrow Skin 프로젝트 문의하기">
-                            <img src="https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&amp;fit=crop&amp;w=1000&amp;q=85" alt="따뜻한 빛 아래 놓인 스킨케어 제품" loading="lazy">
+                            <img src="assets/images/morrow-skin.jpg" alt="따뜻한 빛 아래 놓인 스킨케어 제품" loading="lazy">
                             <span class="project-number">01 / CONCEPT</span>
                         </a>
                         <div class="project-info">
@@ -480,7 +91,7 @@
                     </article>
                     <article class="project-card reveal">
                         <a class="project-image" href="#contact" aria-label="Dew Theory 프로젝트 문의하기">
-                            <img src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&amp;fit=crop&amp;w=1000&amp;q=85" alt="미니멀한 뷰티 제품과 자연 소재" loading="lazy">
+                            <img src="assets/images/dew-theory.jpg" alt="미니멀한 뷰티 제품과 자연 소재" loading="lazy">
                             <span class="project-number">02 / CONCEPT</span>
                         </a>
                         <div class="project-info">
@@ -490,7 +101,7 @@
                     </article>
                     <article class="project-card reveal">
                         <a class="project-image" href="#contact" aria-label="Still Botanics 프로젝트 문의하기">
-                            <img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&amp;fit=crop&amp;w=1000&amp;q=85" alt="식물성 성분을 담은 뷰티 제품" loading="lazy">
+                            <img src="assets/images/still-botanics.jpg" alt="식물성 성분을 담은 뷰티 제품" loading="lazy">
                             <span class="project-number">03 / CONCEPT</span>
                         </a>
                         <div class="project-info">
@@ -500,7 +111,7 @@
                     </article>
                     <article class="project-card reveal">
                         <a class="project-image" href="#contact" aria-label="Sunday Ritual 프로젝트 문의하기">
-                            <img src="https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?auto=format&amp;fit=crop&amp;w=1000&amp;q=85" alt="부드러운 색감의 데일리 뷰티 제품" loading="lazy">
+                            <img src="assets/images/sunday-ritual.jpg" alt="부드러운 색감의 데일리 뷰티 제품" loading="lazy">
                             <span class="project-number">04 / CONCEPT</span>
                         </a>
                         <div class="project-info">
@@ -515,7 +126,7 @@
         <section class="about shell" id="about" aria-labelledby="about-title">
             <div class="about-grid">
                 <div class="about-photo reveal">
-                    <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&amp;fit=crop&amp;w=900&amp;q=85" alt="자연에서 영감을 얻은 뷰티 제품과 식물" loading="lazy">
+                    <img src="assets/images/about-botanicals.jpg" alt="자연에서 영감을 얻은 뷰티 제품과 식물" loading="lazy">
                     <span class="about-photo-note">INSPIRED BY THE EVERYDAY</span>
                 </div>
                 <div class="about-copy reveal">
@@ -554,37 +165,6 @@
         </div>
     </footer>
 
-    <script>
-        const menuToggle = document.querySelector(".menu-toggle");
-        const mainNav = document.querySelector(".main-nav");
-
-        menuToggle.addEventListener("click", () => {
-            const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
-            menuToggle.setAttribute("aria-expanded", String(!isExpanded));
-            menuToggle.setAttribute("aria-label", isExpanded ? "메뉴 열기" : "메뉴 닫기");
-            mainNav.classList.toggle("is-open", !isExpanded);
-        });
-
-        mainNav.addEventListener("click", (event) => {
-            if (event.target.closest("a")) {
-                menuToggle.setAttribute("aria-expanded", "false");
-                menuToggle.setAttribute("aria-label", "메뉴 열기");
-                mainNav.classList.remove("is-open");
-            }
-        });
-
-        document.querySelector("#year").textContent = new Date().getFullYear();
-
-        const revealObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("is-visible");
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.12 });
-
-        document.querySelectorAll(".reveal").forEach((element) => revealObserver.observe(element));
-    </script>
+    <script src="js/main.js" defer></script>
 </body>
 </html>
